@@ -1,4 +1,4 @@
-# Mutimodel Joke
+# Mutimodal Joke
 
 [Mistral Workflows](https://docs.mistral.ai/workflows/getting-started/introduction)
 demonstrating multi-modal use of Mistral AI models.
@@ -44,7 +44,7 @@ make execute workflow=multimodal-joke input='{"name": "Martín Alvarez Bellini",
 1. Press "start workflow" button (top right)
    - If button is greyed out, restart the worker (`make start-worker`), then refresh this page
 1. Fill in the input JSON object
-   - For example: `{"name": "Martín Alvarez Bellini", "lanaguage": "es-AR"}`
+   - For example: `{"name": "Martín Alvarez Bellini", "language": "es-AR"}`
 1. Press "start workflow" button (bottom right)
 1. Observe the Gantt Chart showing each activity executing
 1. Select each activity from the bottom left to view its inputs and outputs

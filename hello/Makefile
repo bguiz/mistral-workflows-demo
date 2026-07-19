@@ -1,4 +1,4 @@
-.PHONY: start-worker execute installdeps lint format typecheck lint-workflows check start-examples execute-insurance-claims execute-cargo-release execute-code-modernization
+.PHONY: start-worker execute installdeps lint format typecheck test lint-workflows check start-examples execute-insurance-claims execute-cargo-release execute-code-modernization
 
 ## Install dependencies
 installdeps:
@@ -18,12 +18,16 @@ format:
 typecheck:
 	uv run mypy src/workflows/
 
+## Run unit tests
+test:
+	uv run python -m pytest tests/
+
 ## Lint workflows for determinism / I/O / structure issues (semgrep, advisory)
 lint-workflows:
 	uv run semgrep --config .agents/skills/workflows/scripts/linting/rules/ --quiet src/workflows/
 
-## Run all checks: ruff lint, mypy types, and workflow lint
-check: lint typecheck lint-workflows
+## Run all checks: ruff lint, mypy types, unit tests, and workflow lint
+check: lint typecheck test lint-workflows
 
 ## Auto-discover all workflows and start the worker (with file-watch auto-reload)
 start-worker:
